@@ -2,6 +2,7 @@ const gulp = require("gulp");
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const del = require('del');
+const clean = require('gulp-clean');
 
 const config = {
     src: './src',
@@ -27,6 +28,11 @@ gulp.task('copy:webp', () => gulp
   .pipe(gulp.dest(config.dest))
 )
 
+gulp.task('clean:assets', () => {
+    return gulp.src(`${config.dest}/**/*.{jpg,png,jpeg}`, {read: false})
+      .pipe(clean());
+})
+
 gulp.task('clean', function () {
     return del(config.dest);
 });
@@ -36,6 +42,7 @@ gulp.task(
     gulp.series(
         'clean',
         'copy:webp',
-        'copy:img'
+        'copy:img',
+        'clean:assets'
     )
 );
