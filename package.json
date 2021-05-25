@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-webp": "^4.0.1",
+    "gulp-imagemin": "^7.1.0"
+  },
+  "dependencies": {
+  }
+}
